@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FoodPulse AI — AI-Driven Food Manufacturing Planning Platform</title>
+  <meta name="description" content="AI platform that forecasts demand, schedules production with FEFO perishability logic, and tracks inventory in real time, cutting raw material waste by 68%.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Main Single Page Application Container -->
+  <div id="app"></div>
+
+  <!-- Universal Modal System -->
+  <div id="app-modal" class="modal">
+    <div class="card" style="width:min(440px, 94vw); max-height:90vh; overflow-y:auto;" id="modal-body"></div>
+  </div>
+
+  <!-- Academic Review Presentation Deck Mode (10 Slides) -->
+  <div id="deck-overlay" class="deck-overlay">
+    <div class="deck-header">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="b grn" style="font-size:11px;">SRM EEC Project Review</span>
+        <span style="font-weight:700; color:#ffffff;" id="deck-title">AI-Driven Food Manufacturing Planning Platform</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="mu" style="font-size:13px;" id="deck-counter">Slide 1 of 10</span>
+        <button class="btn ghost btn-sm" onclick="PresentationDeck.close()" title="Exit Presentation (Esc)">
+          ✕ Exit Deck
+        </button>
+      </div>
+    </div>
+
+    <div class="deck-progress">
+      <div class="deck-progress-fill" id="deck-progress-fill" style="width: 10%;"></div>
+    </div>
+
+    <div class="deck-stage" id="deck-stage">
+      <!-- Injected by presentation.js -->
+    </div>
+
+    <div class="deck-footer">
+      <div style="font-size:12px; color:var(--mu);">
+        Use <kbd style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px;">←</kbd> and <kbd style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px;">→</kbd> arrows or buttons to navigate
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn ghost btn-sm" onclick="PresentationDeck.prev()">← Previous</button>
+        <button class="btn btn-sm" onclick="PresentationDeck.next()">Next Slide →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic Modules -->
+  <script src="/js/charts.js"></script>
+  <script src="/js/presentation.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

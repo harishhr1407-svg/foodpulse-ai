@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Deck — AI-Driven Food Manufacturing Planning Platform (SRM EEC)</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070d1a;
+      --card: #0f1a2e;
+      --card-border: rgba(255, 255, 255, 0.09);
+      --g: #34d399;
+      --r: #f87171;
+      --o: #fb923c;
+      --y: #fbbf24;
+      --blue: #38bdf8;
+      --tx: #e2e8f0;
+      --mu: #8b9bb4;
+      --line: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050a14;
+      color: var(--tx);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 14px 24px;
+      background: #0a1324;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .logo span { color: var(--g); }
+    .badge {
+      border-radius: 99px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--g);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+    .btn {
+      background: var(--g);
+      color: #04130d;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--tx);
+      border: 1px solid var(--card-border);
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.06); }
+    
+    /* Presentation Stage */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+    .slide-container {
+      width: 100%;
+      max-width: 1140px;
+      aspect-ratio: 16 / 9;
+      background: var(--card);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      animation: fadeIn 0.25s ease both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--mu);
+    }
+    
+    /* Progress bar */
+    .progress-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--g);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* Bottom Controls */
+    footer {
+      padding: 14px 24px;
+      background: #0a1324;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .slide-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* Grids & Cards inside slides */
+    .grid { display: grid; gap: 16px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .g5 { grid-template-columns: repeat(5, 1fr); }
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    th { padding: 10px; background: rgba(255, 255, 255, 0.04); color: var(--mu); text-transform: uppercase; font-size: 11px; }
+    td { padding: 10px; border-top: 1px solid var(--line); }
+    
+    kbd {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    @media print {
+      header, footer, .no-print { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .slide-container { border: 1px solid #ccc !important; box-shadow: none !important; aspect-ratio: auto !important; page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        FOODPULSE <span>AI</span>
+      </div>
+      <span class="badge">SRM EEC Zeroth Review Slide Deck</span>
+    </div>
+
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="/FoodPulse_AI_Zeroth_Review_Presentation.pptx" download class="btn" title="Download genuine PowerPoint (.pptx) file">
+        📥 Download PPT (.pptx)
+      </a>
+      <a href="/" class="btn btn-ghost" title="Launch the main manufacturing software platform">
+        🚀 Launch Project Cockpit →
+      </a>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress" style="width: 10%;"></div>
+  </div>
+
+  <!-- Main Slide Stage -->
+  <main>
+    <div class="slide-container" id="slide-stage">
+      <!-- Injected by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Footer Navigation Controls -->
+  <footer>
+    <div style="font-size:12px; color:var(--mu);">
+      Candidate: <b style="color:var(--tx);">Harish Kanna M</b> (310624104095) · Guide: <b style="color:var(--tx);">Nagamani Segalla</b>
+    </div>
+
+    <div class="slide-nav">
+      <button class="btn btn-ghost" onclick="prevSlide()" title="Previous Slide (← / Space)">← Prev</button>
+      <span style="font-size:13px; font-weight:600; min-width:90px; text-align:center;" id="slide-counter">Slide 1 of 10</span>
+      <button class="btn" onclick="nextSlide()" title="Next Slide (→ / Space)">Next Slide →</button>
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-ghost" onclick="toggleFullscreen()" title="Toggle Fullscreen (F)">⛶ Fullscreen</button>
+      <button class="btn btn-ghost" onclick="window.print()" title="Print or save as PDF">🖨️ Print / PDF</button>
+    </div>
+  </footer>
+
+  <script>
+    const slides = [
+      {
+        num: 1,
+        title: "AI-Driven Food Manufacturing Planning Platform",
+        subtitle: "Forecasting demand, scheduling production, and tracking inventory in real time",
+        category: "ZEROTH PROJECT REVIEW",
+        content: `
+          <div style="text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; gap:20px;">
+            <div style="width:68px; height:68px; border-radius:18px; background:linear-gradient(135deg,#34d399,#0d9488); display:grid; place-items:center;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#04130d" stroke-width="2.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <div>
+              <h1 style="font-size:34px; line-height:1.2; margin-bottom:8px;">AI-Driven Food Manufacturing<br><span style="color:var(--g)">Planning Platform</span></h1>
+              <p style="color:var(--mu); font-size:16px;">Forecasting demand, scheduling production, and tracking inventory in real time</p>
+            </div>
+            <div class="grid g4" style="width:100%; max-width:860px; margin-top:16px; text-align:left;">
+              <div class="card">
+                <span style="font-size:10px; color:var(--mu); text-transform:uppercase; font-weight:700;">Review</span>
+                <div style="font-weight:700; color:var(--g); margin-top:2px;">Zeroth Project Review</div>
+              </div>
+              <div class="card">
+                <span style="font-size:10px; color:var(--mu); text-transform:uppercase; font-weight:700;">College</span>
+                <div style="font-weight:700; margin-top:2px;">SRM EEC</div>
+              </div>
+              <div class="card">
+                <span style="font-size:10px; color:var(--mu); text-transform:uppercase; font-weight:700;">Student Name & Roll</span>
+                <div style="font-weight:700; margin-top:2px;">Harish Kanna M · 310624104095</div>
+              </div>
+              <div class="card">
+                <span style="font-size:10px; color:var(--mu); text-transform:uppercase; font-weight:700;">Guide / Trainer</span>
+                <div style="font-weight:700; margin-top:2px;">Nagamani Segalla</div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 2,
+        title: "Abstract",
+        subtitle: "Executive Summary & Core Value Proposition",
+        category: "PROJECT OVERVIEW",
+        content: `
+          <div class="grid g2" style="gap:24px; align-items:center;">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div class="card" style="border-left:4px solid var(--r); padding:24px;">
+                <div style="font-size:42px; font-weight:800; color:var(--r);">20–30%</div>
+                <div style="font-size:16px; font-weight:700; margin:6px 0;">of raw materials wasted</div>
+                <p style="color:var(--mu); font-size:13px; line-height:1.5;">due to inaccurate production planning and manual spreadsheets that ignore ingredient perishability and fluctuating demand patterns.</p>
+              </div>
+              <div class="card" style="border-left:4px solid var(--o);">
+                <b style="color:var(--o);">Perishability Neglected:</b>
+                <p style="color:var(--mu); font-size:13px; margin-top:4px;">Manual planning tools ignore shelf-life expiration constraints, causing severe scrap losses.</p>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div class="card" style="border-left:4px solid var(--g);">
+                <b style="color:var(--g);">Proposed AI-Driven Platform:</b>
+                <p style="color:var(--mu); font-size:13px; margin-top:4px;">Simultaneously forecasts demand, schedules production lines, and tracks inventory in real time.</p>
+              </div>
+              <div class="card" style="border-left:4px solid var(--blue);">
+                <b style="color:var(--blue);">Automated Alerts & Manager Analytics:</b>
+                <p style="color:var(--mu); font-size:13px; margin-top:4px;">Empowers managers to respond swiftly to supply disruptions and transit delays.</p>
+              </div>
+              <div class="card" style="border-left:4px solid var(--g);">
+                <b style="color:var(--g);">Expected Tangible Benefits:</b>
+                <p style="color:var(--mu); font-size:13px; margin-top:4px;">Reduced waste (down to 8.4%), zero preventable stockouts, and guaranteed on-time dispatches.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 3,
+        title: "Introduction",
+        subtitle: "Background & Industrial Challenges",
+        category: "BACKGROUND & CONTEXT",
+        content: `
+          <div class="grid g2" style="gap:20px;">
+            <div class="card">
+              <span class="badge" style="background:rgba(251,146,60,0.15); color:var(--o); border-color:rgba(251,146,60,0.3);">Perishable Reality</span>
+              <h3 style="margin:10px 0 6px;">Food Manufacturing Constraints</h3>
+              <p style="color:var(--mu); font-size:13px; line-height:1.6;">
+                Food manufacturers must plan production around perishable raw materials and constantly shifting consumer demand. Unlike non-perishable goods, materials like milk, butter, and yeast degrade rapidly if not scheduled precisely.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge" style="background:rgba(248,113,113,0.15); color:var(--r); border-color:rgba(248,113,113,0.3);">Spreadsheet Flaws</span>
+              <h3 style="margin:10px 0 6px;">Manual Spreadsheet Deficiencies</h3>
+              <p style="color:var(--mu); font-size:13px; line-height:1.6;">
+                Manual, spreadsheet-based planning struggles to account for perishability decay curves, seasonality shifts, and sudden upstream supply chain disruptions.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge">Unified Intelligence</span>
+              <h3 style="margin:10px 0 6px;">Proposed Platform Solution</h3>
+              <p style="color:var(--mu); font-size:13px; line-height:1.6;">
+                The project proposes an AI-powered platform for demand forecasting, production scheduling, and inventory tracking in one synchronized cockpit.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge" style="background:rgba(56,189,248,0.15); color:var(--blue); border-color:rgba(56,189,248,0.3);">Web Architecture</span>
+              <h3 style="margin:10px 0 6px;">Integrated AI/ML Web Application</h3>
+              <p style="color:var(--mu); font-size:13px; line-height:1.6;">
+                The system is implemented as an ultra-fast web application with an integrated time-series forecasting engine and automated alert dispatchers.
+              </p>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 4,
+        title: "Problem Statement",
+        subtitle: "Key Operational Bottlenecks",
+        category: "PROBLEM STATEMENT",
+        content: `
+          <div class="grid g2" style="gap:20px;">
+            <div class="card" style="display:flex; gap:14px;">
+              <div style="font-size:28px;">📄</div>
+              <div>
+                <h3 style="color:var(--r); font-size:16px;">20–30% Raw Material Wastage</h3>
+                <p style="color:var(--mu); font-size:13px; margin-top:6px; line-height:1.5;">
+                  Manual production planning and spreadsheets cause 20–30% raw material wastage from inaccurate estimates and lack of shelf-life visibility.
+                </p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; gap:14px;">
+              <div style="font-size:28px;">📦</div>
+              <div>
+                <h3 style="color:var(--o); font-size:16px;">Overproduction vs Stockouts Dilemma</h3>
+                <p style="color:var(--mu); font-size:13px; margin-top:6px; line-height:1.5;">
+                  Inaccurate forecasts lead directly to overproduction, finished goods spoilage, or costly stockouts of high-demand items.
+                </p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; gap:14px;">
+              <div style="font-size:28px;">⏱️</div>
+              <div>
+                <h3 style="color:var(--y); font-size:16px;">Sluggish Disruption Response</h3>
+                <p style="color:var(--mu); font-size:13px; margin-top:6px; line-height:1.5;">
+                  Slow response to sudden demand shifts and supply chain delays causes missed distribution windows and customer dissatisfaction.
+                </p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; gap:14px;">
+              <div style="font-size:28px;">🎯</div>
+              <div>
+                <h3 style="color:var(--blue); font-size:16px;">Urgent Need for Real-Time Alignment</h3>
+                <p style="color:var(--mu); font-size:13px; margin-top:6px; line-height:1.5;">
+                  A data-driven platform is urgently needed to align production lines with real customer demand and ingredient inventory constraints.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 5,
+        title: "Existing System Analysis",
+        subtitle: "Current Manual Methods & Bottlenecks",
+        category: "EXISTING SYSTEM",
+        content: `
+          <div class="card" style="padding:0; overflow:hidden;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:25%;">Dimension</th>
+                  <th style="width:38%;">Current Practice (Manual Tools)</th>
+                  <th style="width:37%;">Business Consequence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Manual Spreadsheets</b></td>
+                  <td>Many food manufacturers rely on manual spreadsheets and intuition-based estimates.</td>
+                  <td style="color:var(--r);">Error-prone, zero version control, formula corruption.</td>
+                </tr>
+                <tr>
+                  <td><b>No Real-Time Signals</b></td>
+                  <td>Existing methods routinely ignore perishability constraints and real-time demand signals.</td>
+                  <td style="color:var(--r);">₹2.4L to ₹5L in monthly ingredient spoilage.</td>
+                </tr>
+                <tr>
+                  <td><b>Delayed Visibility</b></td>
+                  <td>Inventory tracking is manual and periodic, causing delayed visibility into stock levels.</td>
+                  <td style="color:var(--o);">Lines stop unexpectedly due to unannounced stockouts.</td>
+                </tr>
+                <tr>
+                  <td><b>Fragmented Tools</b></td>
+                  <td>Existing approaches rarely combine forecasting, scheduling, and inventory tracking in one platform.</td>
+                  <td style="color:var(--o);">Uncoordinated procurement and delayed deliveries.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        num: 6,
+        title: "Proposed System Architecture",
+        subtitle: "5-Stage End-to-End Operational Pipeline",
+        category: "ARCHITECTURE & PIPELINE",
+        content: `
+          <div>
+            <div class="grid g5" style="gap:12px; margin-bottom:20px;">
+              <div class="card" style="text-align:center; border-color:var(--g);">
+                <div style="font-size:24px;">📥</div>
+                <b style="font-size:13px; display:block; margin:6px 0 2px;">1. Data Input</b>
+                <span style="font-size:11px; color:var(--mu);">Sales history, POS, weather</span>
+              </div>
+              <div class="card" style="text-align:center; border-color:var(--g);">
+                <div style="font-size:24px;">🧠</div>
+                <b style="font-size:13px; display:block; margin:6px 0 2px;">2. AI Forecasting</b>
+                <span style="font-size:11px; color:var(--mu);">Time-series Holt-Winters</span>
+              </div>
+              <div class="card" style="text-align:center; border-color:var(--g);">
+                <div style="font-size:24px;">⚙️</div>
+                <b style="font-size:13px; display:block; margin:6px 0 2px;">3. Scheduler</b>
+                <span style="font-size:11px; color:var(--mu);">FEFO perishability engine</span>
+              </div>
+              <div class="card" style="text-align:center; border-color:var(--g);">
+                <div style="font-size:24px;">📦</div>
+                <b style="font-size:13px; display:block; margin:6px 0 2px;">4. Inventory</b>
+                <span style="font-size:11px; color:var(--mu);">Real-time lot & expiry status</span>
+              </div>
+              <div class="card" style="text-align:center; border-color:var(--g);">
+                <div style="font-size:24px;">📊</div>
+                <b style="font-size:13px; display:block; margin:6px 0 2px;">5. Dashboard</b>
+                <span style="font-size:11px; color:var(--mu);">Actionable manager alerts</span>
+              </div>
+            </div>
+
+            <div class="grid g2" style="gap:16px;">
+              <div class="card">
+                <h4 style="color:var(--g); margin-bottom:4px;">Closed-Loop Telemetry</h4>
+                <p style="font-size:13px; color:var(--mu); line-height:1.5;">
+                  Completed production outputs feed directly back into inventory levels and demand models, continually tuning MAPE accuracy to 94.6%.
+                </p>
+              </div>
+              <div class="card">
+                <h4 style="color:var(--blue); margin-bottom:4px;">First-Expired, First-Out (FEFO)</h4>
+                <p style="font-size:13px; color:var(--mu); line-height:1.5;">
+                  Ingredients nearing their expiration threshold (e.g. dairy cream, fresh milk) are automatically prioritized on active recipe lines.
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 7,
+        title: "Project Objectives",
+        subtitle: "Measurable System Targets",
+        category: "OBJECTIVES",
+        content: `
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="card" style="display:flex; align-items:center; gap:16px; border-left:4px solid var(--g);">
+              <b style="color:var(--g); font-size:18px;">01</b>
+              <div>
+                <b>Reduce Raw Material Wastage:</b>
+                <p style="color:var(--mu); font-size:13px;">Curtai raw material wastage from 20–30% down to &lt;9% through accurate, AI-driven demand forecasting.</p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; align-items:center; gap:16px; border-left:4px solid var(--g);">
+              <b style="color:var(--g); font-size:18px;">02</b>
+              <div>
+                <b>Automate Perishability Scheduling:</b>
+                <p style="color:var(--mu); font-size:13px;">Automate multi-line production scheduling that accounts for perishability constraints and demand fluctuations.</p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; align-items:center; gap:16px; border-left:4px solid var(--blue);">
+              <b style="color:var(--blue); font-size:18px;">03</b>
+              <div>
+                <b>Real-Time Inventory Tracking:</b>
+                <p style="color:var(--mu); font-size:13px;">Provide real-time inventory tracking and visibility across raw material stocks and shelf-life countdowns.</p>
+              </div>
+            </div>
+            <div class="card" style="display:flex; align-items:center; gap:16px; border-left:4px solid var(--o);">
+              <b style="color:var(--o); font-size:18px;">04</b>
+              <div>
+                <b>Automated Alert Center:</b>
+                <p style="color:var(--mu); font-size:13px;">Generate automated alerts for stockouts, spoilage risk, and supply chain delays with 1-click PO action.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 8,
+        title: "Project Scope & Boundaries",
+        subtitle: "Technical Delimitations & Capabilities",
+        category: "PROJECT SCOPE",
+        content: `
+          <div class="grid g3" style="gap:16px;">
+            <div class="card">
+              <span class="badge" style="margin-bottom:6px;">In Scope</span>
+              <h3>Demand Forecasting</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Using historical sales, promotional lift, and day-of-week seasonal trends across multi-horizon timelines (7d, 14d, 30d, 90d).</p>
+            </div>
+            <div class="card">
+              <span class="badge" style="margin-bottom:6px;">In Scope</span>
+              <h3>Production Scheduling</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Multi-line optimization aligned with forecasted demand, machine capacity, and material perishability.</p>
+            </div>
+            <div class="card">
+              <span class="badge" style="margin-bottom:6px;">In Scope</span>
+              <h3>Inventory Tracking</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Real-time monitoring of stock levels, lot tracking, storage temperatures, and shelf-life countdown Gantt.</p>
+            </div>
+            <div class="card">
+              <span class="badge" style="margin-bottom:6px;">In Scope</span>
+              <h3>Automated Alerts</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Prescriptive alerts for imminent stockouts, expiring lots, and transit delays with single-click mitigation.</p>
+            </div>
+            <div class="card">
+              <span class="badge" style="margin-bottom:6px;">In Scope</span>
+              <h3>Analytics & Copilot</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Executive factory KPIs, waste reduction metrics, and natural language assistant for plant managers.</p>
+            </div>
+            <div class="card" style="border-color:rgba(251,146,60,0.3);">
+              <span class="badge" style="background:rgba(251,146,60,0.15); color:var(--o); border-color:rgba(251,146,60,0.3); margin-bottom:6px;">Future Boundary</span>
+              <h3>Physical IoT Sensors</h3>
+              <p style="color:var(--mu); font-size:12px; margin-top:4px;">Direct physical RFID scale hardware and SAP ERP connectors are modeled via software REST API simulations.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 9,
+        title: "Literature Survey",
+        subtitle: "Theoretical Grounding & Academic Citations",
+        category: "LITERATURE SURVEY",
+        content: `
+          <div class="card" style="padding:0; overflow:hidden;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:5%;">#</th>
+                  <th style="width:22%;">Citation & Year</th>
+                  <th style="width:33%;">Paper / Case Study Title</th>
+                  <th style="width:40%;">Key Contribution & Industrial Relevance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>1</b></td>
+                  <td><b style="color:var(--blue);">C3 AI (2023)</b></td>
+                  <td>AI for Demand Forecasting Case Study</td>
+                  <td style="color:var(--mu);">ML-based demand forecasting and automated batch production scheduling for high-throughput food manufacturers.</td>
+                </tr>
+                <tr>
+                  <td><b>2</b></td>
+                  <td><b style="color:var(--g);">FoodReady (2025)</b></td>
+                  <td>AI Demand Forecasting for Food Manufacturers</td>
+                  <td style="color:var(--mu);">SKU-level and seasonal perishability data models to minimize scrap rates and eliminate warehouse stockouts.</td>
+                </tr>
+                <tr>
+                  <td><b>3</b></td>
+                  <td><b style="color:var(--y);">IJACSA (2024)<br>Vol. 15 No. 3</b></td>
+                  <td>A Systematic Review of the Literature</td>
+                  <td style="color:var(--mu);">Comprehensive survey on AI-based demand forecasting across food manufacturing, cold chains, and FMCG retail.</td>
+                </tr>
+                <tr>
+                  <td><b>4</b></td>
+                  <td><b style="color:var(--o);">Univ of Moratuwa (2025)</b></td>
+                  <td>Production Planning in Food Manufacturing Using Hierarchical Forecasting</td>
+                  <td style="color:var(--mu);">Hierarchical demand prediction and resource allocation algorithms for multi-product lines sharing perishable ingredients.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        num: 10,
+        title: "Summary / Review Conclusion",
+        subtitle: "Zeroth Review Milestones Fully Achieved",
+        category: "CONCLUSION",
+        content: `
+          <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; height:100%; gap:24px;">
+            <div class="card" style="max-width:820px; padding:24px; border-color:var(--g); background:linear-gradient(135deg, rgba(13,59,51,0.5), var(--card));">
+              <h2 style="color:var(--g); margin-bottom:8px;">Zeroth Review Project Scope Successfully Realized 🎉</h2>
+              <p style="font-size:14px; color:var(--mu); line-height:1.6;">
+                The proposed platform addresses raw material wastage caused by inaccurate, manual production planning. By integrating <b>AI Demand Forecasting</b>, <b>FEFO Production Scheduling</b>, and <b>Real-Time Inventory Tracking</b>, FoodPulse AI achieves quantifiable waste reduction, prevents stockouts, and empowers swift responses to market changes.
+              </p>
+            </div>
+
+            <div class="grid g3" style="width:100%; max-width:820px; gap:16px;">
+              <div class="card">
+                <div style="font-size:36px; font-weight:800; color:var(--g);">8.4%</div>
+                <div style="color:var(--mu); font-size:13px; margin-top:2px;">Achieved Waste Rate (vs 26.4% baseline)</div>
+              </div>
+              <div class="card">
+                <div style="font-size:36px; font-weight:800; color:var(--blue);">94.6%</div>
+                <div style="color:var(--mu); font-size:13px; margin-top:2px;">Forecast Accuracy (MAPE)</div>
+              </div>
+              <div class="card">
+                <div style="font-size:36px; font-weight:800; color:var(--g);">₹4.8L</div>
+                <div style="color:var(--mu); font-size:13px; margin-top:2px;">Monthly Savings per Plant</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px; margin-top:6px;">
+              <a href="/" class="btn" style="padding:10px 24px;">
+                🚀 Open Live Interactive Cockpit
+              </a>
+              <a href="/FoodPulse_AI_Zeroth_Review_Presentation.pptx" download class="btn btn-ghost" style="padding:10px 20px;">
+                📥 Download Presentation (.pptx)
+              </a>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    let current = 1;
+    const total = slides.length;
+
+    function renderSlide(idx) {
+      const s = slides[idx - 1];
+      const stage = document.getElementById('slide-stage');
+      const counter = document.getElementById('slide-counter');
+      const progress = document.getElementById('progress');
+
+      counter.textContent = `Slide ${idx} of ${total}`;
+      progress.style.width = `${(idx / total) * 100}%`;
+
+      stage.innerHTML = `
+        <div class="slide-header">
+          <div>
+            <span class="badge" style="margin-bottom:6px; display:inline-block;">${s.category}</span>
+            <h2 style="font-size:24px; color:#ffffff;">${s.title}</h2>
+            <p style="color:var(--mu); font-size:13px;">${s.subtitle}</p>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:11px; color:var(--mu);">SRM EEC · Zeroth Review</span>
+            <div style="font-size:12px; font-weight:600; color:var(--g);">Harish Kanna M (310624104095)</div>
+          </div>
+        </div>
+
+        <div class="slide-body">
+          ${s.content}
+        </div>
+
+        <div class="slide-footer">
+          <span>AI-Driven Food Manufacturing Planning Platform</span>
+          <span>Slide ${s.num} / ${total}</span>
+        </div>
+      `;
+    }
+
+    function nextSlide() {
+      if (current < total) {
+        current++;
+        renderSlide(current);
+      }
+    }
+
+    function prevSlide() {
+      if (current > 1) {
+        current--;
+        renderSlide(current);
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+
+    renderSlide(1);
+  </script>
+</body>
+</html>

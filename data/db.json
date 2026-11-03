@@ -1,0 +1,425 @@
+{
+  "academicInfo": {
+    "title": "AI-Driven Food Manufacturing Planning Platform",
+    "shortName": "FoodPulse AI",
+    "tagline": "Predict. Produce. Prevent Waste.",
+    "department": "Department of Information Technology / CSE",
+    "college": "SRM Easwari Engineering College (SRM EEC)",
+    "studentName": "Harish Kanna M",
+    "rollNumber": "310624104095",
+    "guideName": "Nagamani Segalla",
+    "reviewStage": "Zeroth Project Review & Technical Prototype",
+    "academicYear": "2025–2026",
+    "literatureSurvey": [
+      {
+        "id": 1,
+        "author": "C3 AI",
+        "year": "2023",
+        "title": "AI for Demand Forecasting Case Study",
+        "contribution": "ML-based demand forecasting and automated batch production scheduling for high-throughput food manufacturers."
+      },
+      {
+        "id": 2,
+        "author": "FoodReady",
+        "year": "2025",
+        "title": "AI Demand Forecasting for Food Manufacturers",
+        "contribution": "SKU-level and seasonal perishability data models to minimize scrap rates and eliminate warehouse stockouts."
+      },
+      {
+        "id": 3,
+        "author": "IJACSA",
+        "year": "2024",
+        "title": "A Systematic Review of the Literature (Vol. 15 No. 3)",
+        "contribution": "Comprehensive survey on AI-based demand forecasting across food manufacturing, cold chains, and FMCG retail."
+      },
+      {
+        "id": 4,
+        "author": "University of Moratuwa",
+        "year": "2025",
+        "title": "Production Planning in Food Manufacturing Using Hierarchical Forecasting",
+        "contribution": "Hierarchical demand prediction and resource allocation algorithms for multi-product lines sharing perishable ingredients."
+      }
+    ]
+  },
+  "plants": [
+    {
+      "id": "plant-chennai",
+      "name": "Chennai Plant — Unit 01",
+      "location": "Guindy Industrial Estate, Chennai",
+      "activeLines": 5,
+      "efficiency": "91.8%",
+      "wasteRate": "8.4%",
+      "inventoryValue": "₹24.8L"
+    },
+    {
+      "id": "plant-bangalore",
+      "name": "Bangalore Plant — Unit 02",
+      "location": "Peenya Industrial Area, Bangalore",
+      "activeLines": 4,
+      "efficiency": "89.4%",
+      "wasteRate": "9.1%",
+      "inventoryValue": "₹18.5L"
+    },
+    {
+      "id": "plant-hyderabad",
+      "name": "Hyderabad Plant — Unit 03",
+      "location": "Bollaram Industrial Area, Hyderabad",
+      "activeLines": 3,
+      "efficiency": "93.2%",
+      "wasteRate": "7.9%",
+      "inventoryValue": "₹21.2L"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Bread (Sliced White 400g)",
+      "category": "Bakery",
+      "basePrice": 45,
+      "unit": "loaves",
+      "shelfLifeDays": 5,
+      "targetDailyDemand": 4800,
+      "keyIngredients": ["Wheat Flour", "Yeast", "Refined White Sugar", "Unsalted Butter"]
+    },
+    {
+      "id": "prod-2",
+      "name": "Dairy Products (Fresh Milk & Cream)",
+      "category": "Dairy",
+      "basePrice": 38,
+      "unit": "litres/packs",
+      "shelfLifeDays": 3,
+      "targetDailyDemand": 2200,
+      "keyIngredients": ["Fresh Milk", "Fresh Dairy Cream", "Milk Powder"]
+    },
+    {
+      "id": "prod-3",
+      "name": "Chocolate Biscuits (200g Pack)",
+      "category": "Confectionery",
+      "basePrice": 30,
+      "unit": "packs",
+      "shelfLifeDays": 180,
+      "targetDailyDemand": 6000,
+      "keyIngredients": ["Wheat Flour", "Refined White Sugar", "Natural Cocoa Powder", "Sunflower Cooking Oil"]
+    },
+    {
+      "id": "prod-4",
+      "name": "Fruit Juice (Mixed Tropical 1L)",
+      "category": "Beverage",
+      "basePrice": 95,
+      "unit": "bottles",
+      "shelfLifeDays": 60,
+      "targetDailyDemand": 3500,
+      "keyIngredients": ["Refined White Sugar", "Fruit Pulp Concentrate", "Biodegradable Packaging Film"]
+    },
+    {
+      "id": "prod-5",
+      "name": "Snack Pack (Crispy Spiced Masala)",
+      "category": "Snacks",
+      "basePrice": 20,
+      "unit": "pouches",
+      "shelfLifeDays": 90,
+      "targetDailyDemand": 5000,
+      "keyIngredients": ["Corn Meal", "Sunflower Cooking Oil", "Spices", "Biodegradable Packaging Film"]
+    },
+    {
+      "id": "prod-6",
+      "name": "Butter Cookies (Tin 300g)",
+      "category": "Bakery",
+      "basePrice": 120,
+      "unit": "tins",
+      "shelfLifeDays": 120,
+      "targetDailyDemand": 1800,
+      "keyIngredients": ["Wheat Flour", "Unsalted Butter", "Refined White Sugar"]
+    }
+  ],
+  "inventory": [
+    {
+      "id": "inv-1",
+      "name": "Wheat Flour (Grade A)",
+      "category": "Grain & Flours",
+      "stock": 8200,
+      "unit": "kg",
+      "daysToExpiry": 21,
+      "reorderLevel": 3000,
+      "risk": "Low",
+      "storageTemp": "22°C (Dry Ambience)",
+      "batchNo": "WF-2026-B104",
+      "supplier": "Deccan Agro Mills"
+    },
+    {
+      "id": "inv-2",
+      "name": "Milk Powder (Skimmed)",
+      "category": "Dairy Ingredients",
+      "stock": 380,
+      "unit": "kg",
+      "daysToExpiry": 7,
+      "reorderLevel": 500,
+      "risk": "Critical",
+      "storageTemp": "18°C (Cool/Dry)",
+      "batchNo": "MP-2026-D88",
+      "supplier": "Nilgiri Dairy Co."
+    },
+    {
+      "id": "inv-3",
+      "name": "Refined White Sugar",
+      "category": "Sweeteners",
+      "stock": 5100,
+      "unit": "kg",
+      "daysToExpiry": 90,
+      "reorderLevel": 1500,
+      "risk": "Low",
+      "storageTemp": "Ambient",
+      "batchNo": "SG-2026-X11",
+      "supplier": "EID Parry Ltd."
+    },
+    {
+      "id": "inv-4",
+      "name": "Unsalted Dairy Butter",
+      "category": "Dairy Ingredients",
+      "stock": 640,
+      "unit": "kg",
+      "daysToExpiry": 2,
+      "reorderLevel": 400,
+      "risk": "High",
+      "storageTemp": "4°C (Chilled)",
+      "batchNo": "BT-2026-M43",
+      "supplier": "Hatsun Agro"
+    },
+    {
+      "id": "inv-5",
+      "name": "Natural Cocoa Powder",
+      "category": "Flavoring & Cocoa",
+      "stock": 420,
+      "unit": "kg",
+      "daysToExpiry": 60,
+      "reorderLevel": 200,
+      "risk": "Medium",
+      "storageTemp": "Ambient",
+      "batchNo": "CC-2026-K02",
+      "supplier": "Barry Callebaut"
+    },
+    {
+      "id": "inv-6",
+      "name": "Active Dry Yeast",
+      "category": "Fermentation",
+      "stock": 95,
+      "unit": "kg",
+      "daysToExpiry": 12,
+      "reorderLevel": 80,
+      "risk": "Medium",
+      "storageTemp": "15°C (Cool Dry)",
+      "batchNo": "YS-2026-Y09",
+      "supplier": "AB Mauri"
+    },
+    {
+      "id": "inv-7",
+      "name": "Sunflower Cooking Oil",
+      "category": "Oils & Fats",
+      "stock": 2300,
+      "unit": "L",
+      "daysToExpiry": 45,
+      "reorderLevel": 1000,
+      "risk": "Low",
+      "storageTemp": "Ambient",
+      "batchNo": "OL-2026-S19",
+      "supplier": "Adani Wilmar"
+    },
+    {
+      "id": "inv-8",
+      "name": "Biodegradable Packaging Film",
+      "category": "Packaging",
+      "stock": 18000,
+      "unit": "units",
+      "daysToExpiry": 365,
+      "reorderLevel": 5000,
+      "risk": "Low",
+      "storageTemp": "Ambient",
+      "batchNo": "PK-2026-P01",
+      "supplier": "EcoPack Solutions"
+    },
+    {
+      "id": "inv-9",
+      "name": "Fresh Dairy Cream",
+      "category": "Dairy Ingredients",
+      "stock": 12,
+      "unit": "cartons",
+      "daysToExpiry": 2,
+      "reorderLevel": 10,
+      "risk": "High",
+      "storageTemp": "2°C to 4°C",
+      "batchNo": "CR-2026-C04",
+      "supplier": "Heritage Foods"
+    }
+  ],
+  "schedule": [
+    {
+      "id": "sch-1",
+      "time": "06:00",
+      "product": "Bread (Sliced White 400g)",
+      "quantity": 4800,
+      "line": "Line 01 (Bakery)",
+      "primaryMaterial": "Wheat Flour",
+      "priority": "High",
+      "status": "In Progress",
+      "producedQty": 3850,
+      "reason": "Peak morning distribution dispatch requirement and high sales velocity (+18%)."
+    },
+    {
+      "id": "sch-2",
+      "time": "08:30",
+      "product": "Dairy Products (Fresh Milk & Cream)",
+      "quantity": 2200,
+      "line": "Line 04 (Dairy)",
+      "primaryMaterial": "Milk Powder / Cream",
+      "priority": "High",
+      "status": "Scheduled",
+      "producedQty": 0,
+      "reason": "FEFO Priority: Butter expires in 2 days and fresh cream needs immediate pasteurization."
+    },
+    {
+      "id": "sch-3",
+      "time": "11:00",
+      "product": "Chocolate Biscuits (200g Pack)",
+      "quantity": 6000,
+      "line": "Line 03 (Oven/Wrap)",
+      "primaryMaterial": "Natural Cocoa Powder",
+      "priority": "Medium",
+      "status": "Delayed",
+      "producedQty": 1200,
+      "reason": "Line speed adjusted for temperature regulation. Raw material inventory is stable."
+    },
+    {
+      "id": "sch-4",
+      "time": "14:00",
+      "product": "Fruit Juice (Mixed Tropical 1L)",
+      "quantity": 3500,
+      "line": "Line 05 (Tetra Bottling)",
+      "primaryMaterial": "Refined White Sugar",
+      "priority": "Low",
+      "status": "Scheduled",
+      "producedQty": 0,
+      "reason": "Stable shelf-life. Scheduled during off-peak refrigeration tariff window."
+    },
+    {
+      "id": "sch-5",
+      "time": "16:30",
+      "product": "Snack Pack (Crispy Spiced Masala)",
+      "quantity": 5000,
+      "line": "Line 02 (Extruder)",
+      "primaryMaterial": "Sunflower Cooking Oil",
+      "priority": "Medium",
+      "status": "Scheduled",
+      "producedQty": 0,
+      "reason": "Evening dispatch wave to retail distribution hubs across Tamil Nadu."
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "severity": "Critical",
+      "badgeClass": "red",
+      "category": "Inventory",
+      "title": "Milk Powder Stockout Imminent",
+      "description": "Current stock (380 kg) is below reorder threshold (500 kg). Cannot support tomorrow's 08:30 Dairy schedule.",
+      "item": "Milk Powder (Skimmed)",
+      "timeAgo": "10 min ago",
+      "actionRecommendation": "Execute expedited PO of 500 kg from Nilgiri Dairy Co. within the next 4 hours.",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "severity": "Warning",
+      "badgeClass": "org",
+      "category": "Inventory",
+      "title": "Cream & Butter Expiring in 48 Hours",
+      "description": "12 cartons of dairy cream and 640 kg of unsalted butter will reach expiration threshold within 48h.",
+      "item": "Dairy Butter & Cream",
+      "timeAgo": "35 min ago",
+      "actionRecommendation": "Prioritize Line 04 and Line 01 recipes today to consume perishable dairy lots immediately (FEFO).",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "severity": "Attention",
+      "badgeClass": "yel",
+      "category": "Demand",
+      "title": "Bread Demand Surge (+18% Above Forecast)",
+      "description": "Weekend demand models indicate an 18% spike in retail store orders across North Chennai zones.",
+      "item": "Bread (Sliced White 400g)",
+      "timeAgo": "1 hr ago",
+      "actionRecommendation": "Increase Line 01 batch run by 700 loaves; flour inventory is fully sufficient (8,200 kg on hand).",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "severity": "Warning",
+      "badgeClass": "org",
+      "category": "Supply Chain",
+      "title": "Wheat Flour Inbound Transit Delay",
+      "description": "Inbound consignment of 4,000 kg delayed by 8 hours due to highway transit congestion.",
+      "item": "Wheat Flour (Grade A)",
+      "timeAgo": "2 hr ago",
+      "actionRecommendation": "Buffer using on-site stock (8,200 kg remaining). Shift secondary biscuit batch by 2 hours.",
+      "status": "active"
+    }
+  ],
+  "metrics": {
+    "wasteReduction": {
+      "beforeAI": 26.4,
+      "current": 8.4,
+      "target": 5.0,
+      "monthlySavingsINR": "₹4,80,000",
+      "co2OffsetKg": "3,420 kg"
+    },
+    "kpis": [
+      {
+        "label": "Raw Material Waste Rate",
+        "value": "8.4%",
+        "trend": "↓ 14.2% vs last month",
+        "trendType": "good",
+        "sparkline": [26.4, 22.1, 18.3, 14.8, 11.2, 9.6, 8.4],
+        "detail": "Industry average is 20-30%"
+      },
+      {
+        "label": "Forecast Accuracy (MAPE)",
+        "value": "94.6%",
+        "trend": "↑ 3.8% improvement",
+        "trendType": "good",
+        "sparkline": [82.5, 85.0, 88.2, 90.1, 92.4, 93.8, 94.6],
+        "detail": "Confidence interval: 95%"
+      },
+      {
+        "label": "Production Line Efficiency",
+        "value": "91.8%",
+        "trend": "↑ 5.2% OEE score",
+        "trendType": "good",
+        "sparkline": [78, 80, 83, 85, 87, 89, 91.8],
+        "detail": "Target OEE benchmark: >85%"
+      },
+      {
+        "label": "Total Active Inventory Value",
+        "value": "₹24.8L",
+        "trend": "Optimized & Lean",
+        "trendType": "neutral",
+        "sparkline": [28.2, 27.5, 26.0, 25.4, 24.9, 24.8, 24.8],
+        "detail": "9 active tracked ingredient lots"
+      },
+      {
+        "label": "At-Risk Spoilage Inventory",
+        "value": "₹2.4L · 2 items",
+        "trend": "FEFO Mitigation Active",
+        "trendType": "warning",
+        "sparkline": [6.2, 5.5, 4.8, 3.9, 3.2, 2.7, 2.4],
+        "detail": "Cream (12 ctn) & Butter (640 kg)"
+      },
+      {
+        "label": "Stockout Risk Index",
+        "value": "1 Critical Alert",
+        "trend": "Action required in 4h",
+        "trendType": "danger",
+        "sparkline": [5, 4, 3, 2, 2, 1, 1],
+        "detail": "Milk Powder (380 kg left)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "foodpulse-ai",
+  "version": "1.0.0",
+  "description": "AI-Driven Food Manufacturing Planning Platform — Forecasting demand, scheduling production, and tracking inventory in real time.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "food-manufacturing",
+    "demand-forecasting",
+    "perishability",
+    "fefo-scheduling",
+    "waste-reduction",
+    "srm-eec"
+  ],
+  "author": "Harish Kanna M (310624104095)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "isomorphic-git": "^1.44.10",
+    "pptxgenjs": "^4.0.1"
+  }
+}
