@@ -563,13 +563,17 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`=======================================================`);
-  console.log(`🚀 FoodPulse AI Server is running!`);
-  console.log(`🌐 Local URL:   http://localhost:${PORT}`);
-  console.log(`🎓 Project:     AI-Driven Food Manufacturing Planning Platform`);
-  console.log(`🏛️ Institution: SRM EEC (Zeroth Review Ready)`);
-  console.log(`👨‍💻 Candidate:   Harish Kanna M (310624104095)`);
-  console.log(`👩‍🏫 Guide:       Nagamani Segalla`);
-  console.log(`=======================================================`);
-});
+if (process.env.VERCEL !== '1') {
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`=======================================================`);
+    console.log(`🚀 FoodPulse AI Server is running!`);
+    console.log(`🌐 Local URL:   http://localhost:${PORT}`);
+    console.log(`🎓 Project:     AI-Driven Food Manufacturing Planning Platform`);
+    console.log(`🏛️ Institution: SRM EEC (Zeroth Review Ready)`);
+    console.log(`👨‍💻 Candidate:   Harish Kanna M (310624104095)`);
+    console.log(`👩‍🏫 Guide:       Nagamani Segalla`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = server;
